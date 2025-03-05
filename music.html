@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Jersey 25', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0; /* Optional: Set a background color */
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px; /* Adjust the gap between images as needed */
+            width: 80%; /* Adjust the width of the container as needed */
+            height: 80%; /* Adjust the height of the container as needed */
+            border: 5px solid black; /* Add a black outline */
+            box-sizing: border-box; /* Include border in the element's total width and height */
+        }
+        .container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure images cover the grid cells */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/image1.png" alt="Image 1">
+        <img src="images/image2.png" alt="Image 2">
+        <img src="images/image3.png" alt="Image 3">
+        <img src="images/image4.png" alt="Image 4">
+        <img src="images/image5.png" alt="Image 5">
+        <img src="images/image6.png" alt="Image 6">
+        <img src="images/image7.png" alt="Image 7">
+        <img src="images/image8.png" alt="Image 8">
+        <img src="images/image9.png" alt="Image 9">
+    </div>
+</body>
+</html>
