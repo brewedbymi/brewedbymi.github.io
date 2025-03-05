@@ -53,5 +53,12 @@
             <p>games</p>
         </div>
     </div>
+    <audio id="click-sound" src="sounds/clicksound.mp3"></audio>
+    <script>
+        document.addEventListener('click', function() {
+            var audio = document.getElementById('click-sound');
+            audio.play();
+        });
+    </script>
 </body>
 </html>
