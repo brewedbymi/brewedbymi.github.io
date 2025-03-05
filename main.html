@@ -20,7 +20,7 @@
         }
         .top-text {
             position: absolute;
-            top: 150px; /* Adjust this value to position the text higher */
+            top: 190px; /* Adjust this value to position the text higher */
             text-align: center;
             font-size: 100px;
             width: 100%; /* Ensure the text is centered */
@@ -29,6 +29,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-end; 
+            margin-top: 20px;
         }
         .image-item {
             text-align: center;
@@ -58,8 +59,22 @@
             left: 10px;
         }
         .back-home img {
-            max-width: 90px; /* Adjust the size as needed */
+            max-width: 100px; /* Adjust the size as needed */
             height: auto;
+        }
+        .additional-images {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px; /* Add padding to separate from the bottom */
+        }
+        .image-adver {
+            text-align: center;
+            margin: 0 40px; 
+            width: 100%;
         }
     </style>
 </head>
@@ -82,6 +97,11 @@
         <div class="image-item">
             <img src="images/disc.png" alt="Image 3">
             <p>games</p>
+        </div>
+    </div>
+    <div class="additional-images">
+        <div class="image-adver">
+            <img src="images/adver1.gif" alt="Image 4">
         </div>
     </div>
     <audio id="click-sound" src="sounds/clicksound.mp3"></audio>
