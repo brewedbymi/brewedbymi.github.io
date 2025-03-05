@@ -37,11 +37,22 @@
             margin-top: 100px; 
             font-size: 100px;
         }
+        .blinking {
+            animation: blink 2s infinite;
+        }
+        @keyframes blink {
+            0%, 50%, 100% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="top-text">
-        gyatt.
+        vroo<span class="blinking">om</span>
     </div>
     <div class="center-image">
         <a href="main.html">
