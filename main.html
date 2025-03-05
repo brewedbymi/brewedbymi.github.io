@@ -13,9 +13,17 @@
             margin: 0;
             font-family: 'Jersey 25', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             cursor: url('images/cursor.png'), auto; 
+        }
+        .top-text {
+            position: absolute;
+            top: 150px; /* Adjust this value to position the text higher */
+            text-align: center;
+            font-size: 100px;
+            width: 100%; /* Ensure the text is centered */
         }
         .image-container {
             display: flex;
@@ -27,14 +35,22 @@
             margin: 0 40px; 
         }
         .image-item img {
-            max-width: 250px; 
+            max-width: 200px; 
             height: 200px; 
             display: block;
             margin: 0 auto;
+            transition: transform 0.3s ease; /* Smooth transition for transform */
+        }
+        .image-item img:hover {
+            transform: rotate(10deg); /* Tilt the image on hover */
         }
         .image-item p {
             margin-top: 20px; 
             font-size: 24px; 
+            transition: color 0.3s ease; /* Smooth transition */
+        }
+        .image-item p:hover {
+            color: #c0c0c0; /* Change text color on hover */
         }
         .back-home {
             position: absolute;
@@ -42,14 +58,17 @@
             left: 10px;
         }
         .back-home img {
-            max-width: 50px; /* Adjust the size as needed */
+            max-width: 90px; /* Adjust the size as needed */
             height: auto;
         }
     </style>
 </head>
 <body>
+    <div class="top-text">
+        navigation
+    </div>
     <a href="index.html" class="back-home">
-        <img src="images/home-icon.png" alt="Home">
+        <img src="images/back.png" alt="Home">
     </a>
     <div class="image-container">
         <div class="image-item">
