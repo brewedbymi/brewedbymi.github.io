@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Inter">
+    <title>Music Player</title>
+    <style>
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-size: 200% 200%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.4); /* Slightly opaque background */
+            padding: 20px;
+            border-radius: 10px;
+            width: 310px; /* Reduced width */
+        }
+        .player {
+            text-align: center;
+        }
+        #music-title {
+            font-size: 18px; /* Smaller font size for song titles */
+            margin-bottom: 5px; /* Reduced bottom margin */
+        }
+        #artist-name {
+            font-size: 14px; /* Font size for artist name */
+            margin-bottom: 10px; /* Bottom margin */
+        }
+        .controls {
+            margin-top: 10px; /* Reduced top margin */
+            display: flex;
+            justify-content: center;
+        }
+        button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .time-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(to right, white 0%, white var(--progress, 0%), rgba(255, 255, 255, 0.3) var(--progress, 0%), rgba(255, 255, 255, 0.3) 100%);
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+            margin-top: 10px; /* Reduced top margin */
+        }
+        .time-slider:hover {
+            opacity: 1;
+        }
+        .time-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 0; /* Remove the circle */
+            height: 0; /* Remove the circle */
+            background: none; /* Remove the circle */
+            cursor: pointer;
+        }
+        .time-slider::-moz-range-thumb {
+            width: 0; /* Remove the circle */
+            height: 0; /* Remove the circle */
+            background: none; /* Remove the circle */
+            cursor: pointer;
+        }
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px; /* Thinner height */
+            background: linear-gradient(to right, white 0%, white var(--volume, 100%), rgba(255, 255, 255, 0.3) var(--volume, 100%), rgba(255, 255, 255, 0.3) 100%);
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+            margin-top: 10px; /* Reduced top margin */
+        }
+        .volume-slider:hover {
+            opacity: 1;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 0; /* Remove the circle */
+            height: 0; /* Remove the circle */
+            background: none; /* Remove the circle */
+            cursor: pointer;
+        }
+        .volume-slider::-moz-range-thumb {
+            width: 0; /* Remove the circle */
+            height: 0; /* Remove the circle */
+            background: none; /* Remove the circle */
+            cursor: pointer;
+        }
+        .fa {
+            font-size: 20px;
+            color: white;
+        }
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="player">
+            <img id="album-art" src="path/to/your/image1.jpg" alt="Album Art" style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 10px;">
+            <h1 id="music-title"></h1>
+            <h2 id="artist-name"></h2>
+            <audio id="audio" src="C:\Users\chees\Downloads\spotidownloader.com - The Dress - Dijon.mp3"></audio>
+            <input type="range" id="time-slider" class="time-slider" min="0" max="100" value="0">
+            <div class="time-info">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+            <div class="controls">
+                <button onclick="previousSong()"><i class="fa fa-backward"></i></button>
+                <button id="play-pause-button" onclick="togglePlayPause()"><i class="fa fa-play"></i></button>
+                <button onclick="nextSong()"><i class="fa fa-forward"></i></button>
+            </div>
+            <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="100">
+        </div>
+    </div>
+    <script>
+        const audio = document.getElementById('audio');
+        const timeSlider = document.getElementById('time-slider');
+        const volumeSlider = document.getElementById('volume-slider');
+        const playPauseButton = document.getElementById('play-pause-button');
+        const playPauseIcon = playPauseButton.querySelector('i');
+        const musicTitle = document.getElementById('music-title');
+        const artistName = document.getElementById('artist-name');
+        const albumArt = document.getElementById('album-art');
+        const currentTimeElement = document.getElementById('current-time');
+        const durationElement = document.getElementById('duration');
+        const body = document.body;
+        const songs = [
+            { title: "The Dress", artist: "Dijon", src: "C:\Users\chees\Downloads\Website\spotidownloader.com - The Dress - Dijon.mp3", art: "dress.jpg", gradient: "radial-gradient(circle at 0% 50%, #964B00, #013220, #C4A484)" },
+            { title: "Meteor Shower", artist: "The Dinosaur's Skin, Waa Wei", src: "C:\Users\chees\Downloads\Website\spotidownloader.com - Meteor Shower - 恐龍的皮.mp3", art: "meteor.jpg", gradient: "radial-gradient(circle at 0% 50%, #90D5FF, #5C4033, #C4A484)" },
+            { title: "Undo", artist: "The 1975", src:"C:\Users\chees\Downloads\Website\spotidownloader.com - Undo - The 1975.mp3" , art: "undo.jpg", gradient: "radial-gradient(circle at 0% 50%, #808080, #000000)" },
+            { title: "Plane Crash", artist: "BUBBLE TEA AND CIGARETTES", src: "C:\Users\chees\Downloads\Website\spotidownloader.com - Plane Crash - BUBBLE TEA AND CIGARETTES.mp3", art: "plane.jpg", gradient: "radial-gradient(circle at 0% 50%, #003F38, #000000)" },
+            { title: "TWENTIES", artist: "Giveon", src: "C:\Users\chees\Downloads\Website\spotidownloader.com - TWENTIES - GIVĒON.mp3", art: "twenties.jpg", gradient: "radial-gradient(circle at 0% 50%, #000000, #434343)" },
+            { title: "Have You Ever Been In Love", artist: "The Ivy", src: "C:\Users\chees\Downloads\Website\spotidownloader.com - Have You Ever Been in Love - The Ivy.mp3", art: "inlove.jpg", gradient: "radial-gradient(circle at 0% 50%, #D2042D, #8B0000, #E34234)" },
+            { title: "unless you leave", artist: "Chase Elliot", src: "C:\Users\chees\Downloads\Website\spotidownloader.com - unless you leave - Chase Elliott.mp3", art: "leave.jpg", gradient: "radial-gradient(circle at 0% 50%, #000000, #C4A484)" },
+            { title: "Peach", artist: "Kevin Abstract", src: "C:\Users\chees\Downloads\Website\spotidownloader.com - Peach - Kevin Abstract.mp3", art: "peach.jpg", gradient: "radial-gradient(circle at 0% 50%, #FF4500, #000000)" }
+        ];
+        let currentSongIndex = 0;
+
+        audio.addEventListener('timeupdate', updateTimeSlider);
+        audio.addEventListener('ended', nextSong); // Add event listener for song end
+        audio.addEventListener('loadedmetadata', updateDuration); // Add event listener for metadata load
+        timeSlider.addEventListener('input', seekAudio);
+        volumeSlider.addEventListener('input', updateVolume);
+        audio.addEventListener('play', updatePlayPauseIcon);
+        audio.addEventListener('pause', updatePlayPauseIcon);
+
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function updatePlayPauseIcon() {
+            if (audio.paused) {
+                playPauseIcon.classList.remove('fa-pause');
+                playPauseIcon.classList.add('fa-play');
+            } else {
+                playPauseIcon.classList.remove('fa-play');
+                playPauseIcon.classList.add('fa-pause');
+            }
+        }
+
+        function previousSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            updateSong();
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            updateSong();
+        }
+
+        function updateSong() {
+            audio.src = songs[currentSongIndex].src;
+            musicTitle.textContent = songs[currentSongIndex].title;
+            artistName.textContent = songs[currentSongIndex].artist;
+            albumArt.src = songs[currentSongIndex].art;
+            body.style.background = songs[currentSongIndex].gradient;
+            audio.play();
+            updateDuration(); // Update duration when song changes
+        }
+
+        function updateTimeSlider() {
+            const percentage = (audio.currentTime / audio.duration) * 100;
+            timeSlider.value = percentage;
+            timeSlider.style.setProperty('--progress', `${percentage}%`);
+            currentTimeElement.textContent = formatTime(audio.currentTime);
+        }
+
+        function seekAudio() {
+            const seekTime = (timeSlider.value / 100) * audio.duration;
+            audio.currentTime = seekTime;
+        }
+
+        function updateVolume() {
+            audio.volume = volumeSlider.value / 100;
+            volumeSlider.style.setProperty('--volume', `${volumeSlider.value}%`);
+        }
+
+        function updateDuration() {
+            durationElement.textContent = formatTime(audio.duration);
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Initialize the first song title, artist name, album art, and slider values
+        musicTitle.textContent = songs[currentSongIndex].title;
+        artistName.textContent = songs[currentSongIndex].artist;
+        albumArt.src = songs[currentSongIndex].art;
+        body.style.background = songs[currentSongIndex].gradient;
+        updateVolume(); // Initialize volume slider
+        updateTimeSlider(); // Initialize time slider
+        durationElement.textContent = formatTime(audio.duration || 0); // Initialize duration
+    </script>
+</body>
+</html>
