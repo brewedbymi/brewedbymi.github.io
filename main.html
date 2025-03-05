@@ -19,7 +19,7 @@
         .image-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end; /* Align items to the bottom */
         }
         .image-item {
             text-align: center;
@@ -27,7 +27,12 @@
         }
         .image-item img {
             max-width: 100px; /* Adjust the size as needed */
-            height: auto;
+            height: 100px; /* Set a fixed height */
+            display: block;
+            margin: 0 auto;
+        }
+        .image-item p {
+            margin-top: 10px; /* Adjust the spacing as needed */
         }
     </style>
 </head>
@@ -38,12 +43,12 @@
             <p>music</p>
         </div>
         <div class="image-item">
-            <img src="images/image2.png" alt="Image 2">
-            <p>Image 2</p>
+            <img src="images/comics.png" alt="Image 2">
+            <p>books</p>
         </div>
         <div class="image-item">
-            <img src="images/image3.png" alt="Image 3">
-            <p>Image 3</p>
+            <img src="images/control.png" alt="Image 3">
+            <p>games</p>
         </div>
     </div>
 </body>
