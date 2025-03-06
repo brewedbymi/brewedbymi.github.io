@@ -8,19 +8,62 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow: hidden; 
+            overflow: hidden; /* Prevent scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .background-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0px;
+        }
+        .background-div2 {
+            background: url(images/shelf.png) no-repeat center center;
+            background-size: auto 90%;
+            width: 30vw;
+            height: 30vw;
+            margin-top: 150px;
+            position: relative; /* Make it a containing block for the nested div */
         }
         .background-div {
             background: url(images/desk.png) no-repeat center center;
             background-size: cover;
-            width: 30%;
-            height: 30%;
-            margin-top: 30%; 
-            margin-left: 30%;
+            width: 30vw;
+            height: 30vw;
+            margin-right: 300px; /* Remove horizontal spacing */
+            margin-top: 400px; /* Remove vertical alignment */
+        }
+        .overlay-image {
+            position: absolute;
+            top: 60px;
+            left: 220px;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay-image img {
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .overlay-image img:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            transform: rotate(10deg);
         }
     </style>
 </head>
 <body>
-    <div class="background-div"></div>
+    <div class="background-container">
+        <div class="background-div2">
+            <div class="overlay-image">
+                <img src="images/books.png" alt="Clickable Image">
+            </div>
+        </div>
+        <div class="background-div"></div>
+    </div>
 </body>
 </html>
