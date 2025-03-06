@@ -3,122 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <title>Main</title>
     <style>
         html, body {
             height: 100%;
             margin: 0;
-            font-family: 'Jersey 25', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: url('images/cursor.png'), auto; 
+            overflow: hidden; 
         }
-        .top-text {
-            position: absolute;
-            top: 190px; /* Adjust this value to position the text higher */
-            text-align: center;
-            font-size: 100px;
-            width: 100%; /* Ensure the text is centered */
-        }
-        .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end; 
-            margin-top: 20px;
-        }
-        .image-item {
-            text-align: center;
-            margin: 0 40px; 
-        }
-        .image-item a {
-            display: inline-block;
-        }
-        .image-item img {
-            max-width: 200px; 
-            height: 200px; 
-            display: block;
-            margin: 0 auto;
-            transition: transform 0.3s ease; /* Smooth transition for transform */
-        }
-        .image-item img:hover {
-            transform: rotate(10deg); /* Tilt the image on hover */
-        }
-        .image-item p {
-            margin-top: 20px; 
-            font-size: 24px; 
-            transition: color 0.3s ease; /* Smooth transition */
-        }
-        .image-item p:hover {
-            color: #c0c0c0; /* Change text color on hover */
-        }
-        .back-home {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-        .back-home img {
-            max-width: 100px; /* Adjust the size as needed */
-            height: auto;
-        }
-        .additional-images {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding-bottom: 20px; /* Add padding to separate from the bottom */
-        }
-        .image-adver {
-            text-align: center;
-            margin: 0 40px; 
-            width: 100%;
+        .background-div {
+            background: url(images/desk.png) no-repeat center center;
+            background-size: cover;
+            width: 30%;
+            height: 30%;
+            margin-top: 30%; 
+            margin-left: 30%;
         }
     </style>
 </head>
 <body>
-    <div class="top-text">
-        navigation
-    </div>
-    <a href="index.html" class="back-home">
-        <img src="images/back.png" alt="Home">
-    </a>
-    <div class="image-container">
-        <div class="image-item">
-            <a href="music.html">
-                <img src="images/headphones.png" alt="Image 1">
-            </a>
-            <p>music</p>
-        </div>
-        <div class="image-item">
-            <a href="book.html">
-            <img src="images/comics.png" alt="Image 2">
-            </a>
-            <p>books</p>
-        </div>
-        <div class="image-item">
-            <a href="games.html">
-            <img src="images/disc.png" alt="Image 3">
-            </a>
-            <p>games</p>
-        </div>
-    </div>
-    <div class="additional-images">
-        <div class="image-adver">
-            <img src="images/adver1.gif" alt="Image 4">
-        </div>
-    </div>
-    <audio id="click-sound" src="sounds/clicksound.mp3"></audio>
-    <script>
-        document.addEventListener('click', function() {
-            var audio = document.getElementById('click-sound');
-            audio.play();
-        });
-    </script>
+    <div class="background-div"></div>
 </body>
 </html>
