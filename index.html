@@ -3,11 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brewed by Mi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <title>yea</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            position: relative;
+        }
+        .background-div, .another-background-div {
+            position: relative;
+            z-index: 2; /* Ensure divs are above the image */
+            background-size: cover;
+            background-position: center;
+            margin-top: 200px;
+        }
+        .background-div {
+            width: 440px;
+            height: 380px;
+            background-image: url(images/table.png);
+            margin-top: 290px;
+            margin-left: 370px;
+        }
+        .another-background-div {
+            width: 400px; /* Different width */
+            height: 500px; /* Different height */
+            background-image: url(images/cabinet.png);
+        }
+        .bottom-image {
+            position: absolute;
+            bottom: 0;
+            width: 590px;
+            height: 30px;
+            height: auto;
+            z-index: 1; /* Ensure image is below the divs */
+            top: 540px;
+        }
+        .clickable-image, .clickable-image-2, .clickable-image-3, .clickable-image-4, .clickable-image-5, .clickable-image-6, .clickable-image-7 {
+            position: absolute;
+            transition: transform 0.3s ease; /* Add transition for smooth rotation */
+        }
+        .clickable-image:hover, .clickable-image-2:hover, .clickable-image-3:hover, .clickable-image-4:hover, .clickable-image-5:hover, .clickable-image-6:hover, .clickable-image-7:hover {
+            transform: rotate(-5deg); /* Rotate the image on hover */
+        }
+        .clickable-image {
+            top: 350px;
+            left: 200px;
+            width: 50%;
+            height: 35%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-2 {
+            left: 20px; /* Adjust as needed */
+            bottom: 200px;
+            width: 65%;
+            height: 45%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-3 {
+            top: 1px; /* Adjust as needed */
+            left: 250px; /* Adjust as needed */
+            width: 35%;
+            height: 40%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-4 {
+            top: 230px; /* Adjust as needed */
+            right: 70px; /* Adjust as needed */
+            width: 40%;
+            height: 35%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-5 {
+            top: 350px; /* Adjust as needed */
+            left: 5px; /* Adjust as needed */
+            width: 60%;
+            height: 50%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-6 {
+            right: 400px; /* Adjust as needed */
+            margin-bottom: 600px;            
+            width: 110%;
+            height: 130%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .clickable-image-7 {
+            top: 100px; /* Adjust as needed */
+            right: 340px; /* Adjust as needed */
+            width: 50%;
+            height: 100%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Brewed by Mi</h1>
-    </header>
+    <div class="container">
+        <div class="background-div">
+            <a href="https://example.com">
+                <img src="images/games.png" alt="Clickable Image" class="clickable-image">
+            </a>
+            <a href="https://another-example.com">
+                <img src="images/pc.png" alt="Another Clickable Image" class="clickable-image-2">
+            </a>
+            <a href="https://third-example.com">
+                <img src="images/gundam.png" alt="Third Clickable Image" class="clickable-image-3">
+            </a>
+            <a href="https://fourth-example.com">
+                <img src="images/cat.png" alt="Fourth Clickable Image" class="clickable-image-4">
+            </a>
+            <a href="https://sixth-example.com">
+                <img src="images/arcade.png" alt="Sixth Clickable Image" class="clickable-image-6">
+            </a>
+            <a href="https://seventh-example.com">
+                <img src="images/guitarlol.png" alt="Seventh Clickable Image" class="clickable-image-7">
+            </a>
+        </div>
+        <div class="another-background-div">
+            <a href="https://fifth-example.com">
+                <img src="images/bed.png" alt="Fifth Clickable Image" class="clickable-image-5">
+            </a>
+        </div>
+        <img src="images/carpet.png" alt="Bottom Image" class="bottom-image">
+    </div>
 </body>
 </html>
