@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 10px;
             position: relative;
         }
         .background-div, .another-background-div {
@@ -43,11 +43,11 @@
             z-index: 1; /* Ensure image is below the divs */
             top: 540px;
         }
-        .clickable-image, .clickable-image-2, .clickable-image-3, .clickable-image-4, .clickable-image-5, .clickable-image-6, .clickable-image-7 {
+        .clickable-image, .clickable-image-2, .clickable-image-3, .clickable-image-4, .clickable-image-5, .clickable-image-6, .clickable-image-7, .clickable-image-8 {
             position: absolute;
             transition: transform 0.3s ease; /* Add transition for smooth rotation */
         }
-        .clickable-image:hover, .clickable-image-2:hover, .clickable-image-3:hover, .clickable-image-4:hover, .clickable-image-5:hover, .clickable-image-6:hover, .clickable-image-7:hover {
+        .clickable-image:hover, .clickable-image-2:hover, .clickable-image-3:hover, .clickable-image-4:hover, .clickable-image-5:hover, .clickable-image-6:hover, .clickable-image-7:hover, .clickable-image-8:hover {
             transform: rotate(-5deg); /* Rotate the image on hover */
         }
         .clickable-image {
@@ -99,33 +99,78 @@
             height: 100%;
             z-index: 3; /* Ensure the clickable image is above the background div */
         }
+        .clickable-image-8 {
+            top: 50px; /* Adjust as needed */
+            left: 100px; /* Adjust as needed */
+            width: 30%;
+            height: 15%;
+            z-index: 3; /* Ensure the clickable image is above the background div */
+        }
+        .hover-text {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 150px;
+            color: rgb(255, 81, 0);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            display: none;
+            margin-top: 100px;
+            font-family: 'Jersey 25', sans-serif;
+        }
+        .title-text {
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Jersey 25', sans-serif;
+            text-align: center;
+            margin-top: 50px; /* Adjust this value to move the title-text lower */
+        }
     </style>
+    <script>
+        function showHoverText(text) {
+            const hoverText = document.getElementById('hover-text');
+            hoverText.textContent = text;
+            hoverText.style.display = 'block';
+        }
+
+        function hideHoverText() {
+            const hoverText = document.getElementById('hover-text');
+            hoverText.style.display = 'none';
+        }
+    </script>
 </head>
 <body>
+    <div class="title-text" id="title-text">today i choose..</div>
+    <div class="hover-text" id="hover-text"></div>
     <div class="container">
         <div class="background-div">
-            <a href="https://example.com">
+            <a href="https://example.com" onmouseover="showHoverText('GAMES')" onmouseout="hideHoverText()">
                 <img src="images/games.png" alt="Clickable Image" class="clickable-image">
             </a>
-            <a href="https://another-example.com">
+            <a href="https://another-example.com" onmouseover="showHoverText('NOTES')" onmouseout="hideHoverText()">
                 <img src="images/pc.png" alt="Another Clickable Image" class="clickable-image-2">
             </a>
-            <a href="https://third-example.com">
+            <a href="https://third-example.com" onmouseover="showHoverText('ANIME')" onmouseout="hideHoverText()">
                 <img src="images/gundam.png" alt="Third Clickable Image" class="clickable-image-3">
             </a>
-            <a href="https://fourth-example.com">
+            <a href="https://fourth-example.com" onmouseover="showHoverText('CAT')" onmouseout="hideHoverText()">
                 <img src="images/cat.png" alt="Fourth Clickable Image" class="clickable-image-4">
             </a>
-            <a href="https://sixth-example.com">
+            <a href="https://sixth-example.com" onmouseover="showHoverText('ARCADE')" onmouseout="hideHoverText()">
                 <img src="images/arcade.png" alt="Sixth Clickable Image" class="clickable-image-6">
             </a>
-            <a href="https://seventh-example.com">
+            <a href="https://seventh-example.com" onmouseover="showHoverText('MUSIC')" onmouseout="hideHoverText()">
                 <img src="images/guitarlol.png" alt="Seventh Clickable Image" class="clickable-image-7">
             </a>
         </div>
         <div class="another-background-div">
-            <a href="https://fifth-example.com">
+            <a href="https://fifth-example.com" onmouseover="showHoverText('PROFILE')" onmouseout="hideHoverText()">
                 <img src="images/bed.png" alt="Fifth Clickable Image" class="clickable-image-5">
+            </a>
+            <a href="https://eighth-example.com" onmouseover="showHoverText('COMICS')" onmouseout="hideHoverText()">
+                <img src="images/comicbook.png" alt="Eighth Clickable Image" class="clickable-image-8">
             </a>
         </div>
         <img src="images/carpet.png" alt="Bottom Image" class="bottom-image">
