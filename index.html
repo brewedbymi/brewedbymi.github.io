@@ -8,12 +8,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
     <title>main</title>
     <style>
+        body {
+            background-color: rgb(75, 87, 69); /* Set the background color of the entire website */
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(images/static.gif); /* Add your overlay image here */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* Adjust the opacity as needed */
+            z-index: 20; /* Ensure the overlay is above the background but below other content */
+            pointer-events: none; /* Allow clicks to pass through the overlay */
+        }
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 100px;
             position: relative;
+            z-index: 2; /* Ensure container is above the overlay */
         }
         .background-div, .another-background-div {
             position: relative;
@@ -48,7 +67,7 @@
             transition: transform 0.3s ease; /* Add transition for smooth rotation */
         }
         .clickable-image:hover, .clickable-image-2:hover, .clickable-image-3:hover, .clickable-image-4:hover, .clickable-image-5:hover, .clickable-image-6:hover, .clickable-image-7:hover, .clickable-image-8:hover {
-            transform: rotate(-5deg); /* Rotate the image on hover */
+            transform: rotate(-2deg); /* Rotate the image on hover */
         }
         .clickable-image {
             top: 350px;
@@ -112,20 +131,23 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 150px;
-            color: rgb(255, 81, 0);
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: rgb(116, 223, 123);
+            text-shadow: 0 0 10px rgba(12, 75, 36, 0.76);
             z-index: 10;
             display: none;
             margin-top: 100px;
             font-family: 'Jersey 25', sans-serif;
+            padding: 20px; /* Adjust padding as needed */
+            border-radius: 10px; /* Optional: Add border radius for rounded corners */
         }
         .title-text {
             font-size: 30px;
-            color: rgb(0, 0, 0);
+            color: rgb(162, 211, 166);
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             font-family: 'Jersey 25', sans-serif;
             text-align: center;
             margin-top: 50px; /* Adjust this value to move the title-text lower */
+            z-index: 19;
         }
     </style>
     <script>
@@ -142,8 +164,8 @@
     </script>
 </head>
 <body>
-    <div class="title-text" id="title-text">today i choose..</div>
-    <h1 style="text-align: center; font-family: 'Jersey 25', sans-serif; color: rgb(0, 0, 0); font-size: 10px;">(not mobile supported)</h1>
+    <div class="title-text" id="title-text">where do you go?</div>
+    <h1 style="text-align: center; font-family: 'Jersey 25', sans-serif; color: rgb(112, 165, 116); font-size: 10px;">(not mobile supported)</h1>
     <div class="hover-text" id="hover-text"></div>
     <div class="container">
         <div class="background-div">
